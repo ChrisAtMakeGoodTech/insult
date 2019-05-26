@@ -104,7 +104,7 @@ export function activateKey(key) {
         if (keyValue !== null) {
             localStorage.setItem(CONSTANTS.activeKey, key);
             ActiveMap = JSON.parse(keyValue);
-            setUpEdit(ActiveMap);
+            setUpEdit(ActiveMap, key === CONSTANTS.defaultKey);
         }
     }
 }
