@@ -1,5 +1,6 @@
 const CONSTANTS = {
 	activeKey: '__activeKey',
+	defaultKey: '__default',
 };
 let activeMap = null;
 
@@ -18,7 +19,7 @@ function activateKey(key) {
 }
 
 function initializeLocalStorage() {
-	const insultMap = [
+	const defaultInsults = [
 		['Thou'],
 		[
 			'artless',
@@ -107,8 +108,8 @@ function initializeLocalStorage() {
 			'joithead',
 		],
 	];
-	localStorage.setItem('Shakespeare', JSON.stringify(insultMap));
-	localStorage.setItem(CONSTANTS.activeKey, 'Shakespeare');
+	localStorage.setItem(CONSTANTS.defaultKey, JSON.stringify(defaultInsults));
+	localStorage.setItem(CONSTANTS.activeKey, CONSTANTS.defaultKey);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#Getting_a_random_integer_between_two_values
