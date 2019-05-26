@@ -2,121 +2,13 @@
 <html>
 
 <head>
-    <title>Insult Me</title>
+	<title>Insult Me</title>
+	<script type="module" src="index.mjs"></script>
 </head>
 
 <body>
-    <span>Insult</span>
-    <button>Click</button>
-    <script>
-        const insultMap = [
-            ['Thou'],
-            [
-                'artless',
-                'bawdy',
-                'beslubbering',
-                'churlish',
-                'cockered',
-                'clouted',
-                'craven',
-                'currish',
-                'dankish',
-                'dissembling',
-                'droning',
-                'errant',
-                'fawning',
-                'fobbing',
-                'froward',
-                'frothy',
-                'gleeking',
-                'goatish',
-                'gorbellied',
-                'impertinent',
-                'infectious',
-                'jarring',
-                'loggerheaded',
-                'lumpish',
-                'mammering',
-                'mangled',
-            ],
-            [
-                'base-court',
-                'bat-fowling',
-                'beef-witted',
-                'beetle-headed',
-                'boil-brained',
-                'clapper-clawed',
-                'clay-brained',
-                'common-kissing',
-                'crook-pated',
-                'dismal-dreaming',
-                'dizzy-eyed',
-                'doghearted',
-                'dread-bolted',
-                'earth-vexing',
-                'elf-skinned',
-                'fat-kidneyed',
-                'fen-sucked',
-                'flap-mouthed',
-                'fly-bitten',
-                'folly-fallen',
-                'fool-born',
-                'full-gorged',
-                'guts-griping',
-                'half-faced',
-                'hasty-witted',
-                'hedge-born',
-                'hell-hated',
-            ],
-            [
-                'apple-john',
-                'baggage',
-                'barnacle',
-                'bladder',
-                'boar-pig',
-                'bugbear',
-                'bum-bailey',
-                'canker-blossom',
-                'clack-dish',
-                'clotpole',
-                'coxcomb',
-                'codpiece',
-                'death-token',
-                'dewberry',
-                'flap-dragon',
-                'flax-wench',
-                'flirt-gill',
-                'foot-licker',
-                'fustilarian',
-                'giglet',
-                'gudgeon',
-                'haggard',
-                'harpy',
-                'hedge-pig',
-                'horn-beast',
-                'hugger-mug',
-                'joithead',
-            ],
-        ];
-
-        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#Getting_a_random_integer_between_two_values
-        function getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-        }
-        const theSpan = document.querySelector('span');
-        document.querySelector('button').addEventListener('click', function () {
-            let insult = '';
-            for (const insults of insultMap) {
-                const rand = getRandomInt(0, insults.length);
-                console.log(rand, insults);
-
-                insult += insults[rand] + ' ';
-            }
-            theSpan.innerText = insult;
-        });
-    </script>
+	<span>Insult</span>
+	<button>Click</button>
 </body>
 
 </html>
