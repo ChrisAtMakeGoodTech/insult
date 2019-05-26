@@ -2,7 +2,11 @@ const CONSTANTS = {
 	activeKey: '__activeKey',
 	defaultKey: '__default',
 };
-let activeMap = null;
+let ActiveMap = null;
+
+const theSpan = document.getElementById('insult-display');
+const generateButton = document.getElementById('generate-insult');
+const editContainer = document.getElementById('edit-insults');
 
 if (localStorage.length === 0) {
 	initializeLocalStorage();
@@ -15,9 +19,14 @@ function activateKey(key) {
 		const keyValue = localStorage.getItem(key);
 		if (keyValue !== null) {
 			localStorage.setItem(CONSTANTS.activeKey, key);
-			activeMap = JSON.parse(keyValue);
+			ActiveMap = JSON.parse(keyValue);
+			setUpEdit(ActiveMap);
 		}
 	}
+}
+
+function setUpEdit(activeMap){
+
 }
 
 function loadActiveKey() {
@@ -124,10 +133,10 @@ function getRandomInt(min, max) {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-const theSpan = document.getElementById('insult-display');
-document.getElementById('generate-insult').addEventListener('click', function () {
+
+generateButton.addEventListener('click', function () {
 	let insult = '';
-	for (const insults of activeMap) {
+	for (const insults of ActiveMap) {
 		const randomIndex = getRandomInt(0, insults.length);
 		insult += insults[randomIndex] + ' ';
 	}
