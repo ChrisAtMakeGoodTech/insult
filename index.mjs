@@ -1,8 +1,5 @@
 import { initializeLocalStorage, loadActiveKey, getInsult } from './insult-functions.mjs';
-
-const theSpan = document.getElementById('insult-display');
-const generateButton = document.getElementById('generate-insult');
-const editContainer = document.getElementById('edit-insults');
+import { insultDisplay, generateButton, editContainer } from './ui-elements.mjs';
 
 if (localStorage.length === 0) {
 	initializeLocalStorage();
@@ -11,5 +8,5 @@ if (localStorage.length === 0) {
 }
 
 generateButton.addEventListener('click', function () {
-	theSpan.innerText = getInsult();
+	insultDisplay.innerText = getInsult();
 });
