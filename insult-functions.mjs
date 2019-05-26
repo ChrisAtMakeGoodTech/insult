@@ -1,5 +1,5 @@
 import CONSTANTS from './constants.mjs';
-import { setUpEdit } from './ui-functions.mjs';
+import { setUpKitList } from './ui-functions.mjs';
 
 let ActiveMap = null;
 
@@ -104,7 +104,7 @@ export function activateKey(key) {
         if (keyValue !== null) {
             localStorage.setItem(CONSTANTS.activeKey, key);
             ActiveMap = JSON.parse(keyValue);
-            setUpEdit(ActiveMap, key === CONSTANTS.defaultKey);
+            setUpKitList();
         }
     }
 }
