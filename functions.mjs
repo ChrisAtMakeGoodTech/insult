@@ -112,7 +112,8 @@ export function setUpEdit(activeMap) {
 }
 
 export function loadActiveKey() {
-    activateKey(localStorage.getItem(CONSTANTS.activeKey));
+    const activeKey = localStorage.getItem(CONSTANTS.activeKey);
+    activateKey(activeKey);
 }
 
 export function getInsult() {
