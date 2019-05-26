@@ -1,5 +1,5 @@
 import CONSTANTS from './constants.mjs';
-import {setUpEdit} from './ui-functions.mjs';
+import { setUpEdit } from './ui-functions.mjs';
 
 let ActiveMap = null;
 
@@ -10,6 +10,7 @@ export function initializeLocalStorage() {
             'artless',
             'bawdy',
             'beslubbering',
+            'bootless',
             'churlish',
             'cockered',
             'clouted',
