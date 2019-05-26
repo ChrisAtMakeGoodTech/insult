@@ -6,16 +6,22 @@ let activeMap = null;
 
 if (localStorage.length === 0) {
 	initializeLocalStorage();
+} else {
+	loadActiveKey();
 }
 
 function activateKey(key) {
 	if (key !== CONSTANTS.activeKey) {
 		const keyValue = localStorage.getItem(key);
 		if (keyValue !== null) {
-			activeMap = JSON.parse(keyValue);
 			localStorage.setItem(CONSTANTS.activeKey, key);
+			activeMap = JSON.parse(keyValue);
 		}
 	}
+}
+
+function loadActiveKey() {
+	activateKey(localStorage.getItem(CONSTANTS.activeKey));
 }
 
 function initializeLocalStorage() {
@@ -109,7 +115,7 @@ function initializeLocalStorage() {
 		],
 	];
 	localStorage.setItem(CONSTANTS.defaultKey, JSON.stringify(defaultInsults));
-	localStorage.setItem(CONSTANTS.activeKey, CONSTANTS.defaultKey);
+	activateKey(CONSTANTS.defaultKey);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random#Getting_a_random_integer_between_two_values
@@ -118,13 +124,11 @@ function getRandomInt(min, max) {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
-const theSpan = document.querySelector('span');
-document.querySelector('button').addEventListener('click', function () {
+const theSpan = document.getElementById('insult-display');
+document.getElementById('generate-insult').addEventListener('click', function () {
 	let insult = '';
-	for (const insults of insultMap) {
+	for (const insults of activeMap) {
 		const randomIndex = getRandomInt(0, insults.length);
-		console.log(randomIndex, insults);
-
 		insult += insults[randomIndex] + ' ';
 	}
 	theSpan.innerText = insult;
