@@ -1,5 +1,5 @@
 import { initializeLocalStorage, loadActiveKey, getInsult } from './insult-functions.mjs';
-import { insultDisplay, generateButton, editContainer } from './ui-elements.mjs';
+import { insultDisplay, generateButton } from './ui-elements.mjs';
 
 if (localStorage.length === 0) {
 	initializeLocalStorage();
