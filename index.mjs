@@ -1,4 +1,4 @@
-import { initializeLocalStorage, loadActiveKey, getInsult } from './functions.mjs';
+import { initializeLocalStorage, loadActiveKey, getInsult } from './insult-functions.mjs';
 
 const theSpan = document.getElementById('insult-display');
 const generateButton = document.getElementById('generate-insult');

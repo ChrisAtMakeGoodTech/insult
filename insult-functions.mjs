@@ -1,4 +1,5 @@
 import CONSTANTS from './constants.mjs';
+import {setUpEdit} from './ui-functions.mjs';
 
 let ActiveMap = null;
 
@@ -105,10 +106,6 @@ export function activateKey(key) {
             setUpEdit(ActiveMap);
         }
     }
-}
-
-export function setUpEdit(activeMap) {
-
 }
 
 export function loadActiveKey() {
