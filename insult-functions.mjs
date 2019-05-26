@@ -3,6 +3,10 @@ import { setUpKitList } from './ui-functions.mjs';
 
 let ActiveMap = null;
 
+export function getActiveMap() {
+    return ActiveMap;
+}
+
 export function initializeLocalStorage() {
     const defaultInsults = [
         ['Thou'],
