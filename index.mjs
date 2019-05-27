@@ -1,4 +1,4 @@
-import { initializeLocalStorage, loadActiveKey, activateKey, getInsult } from './insult-functions.mjs';
+import { initializeLocalStorage, loadActiveKey, activateKey, getInsult, saveActiveMapToLocalStorage } from './insult-functions.mjs';
 import { insultDisplay, generateButton, addSetButton, newSetNameInput, insultSets, addInsultWordButton, saveChangesButton } from './ui-elements.mjs';
 import { addNewWord } from './ui-functions.mjs';
 
@@ -26,9 +26,7 @@ insultSets.addEventListener('change', function () {
 
 addInsultWordButton.addEventListener('click', addNewWord);
 
-saveChangesButton.addEventListener('click', function () {
-
-});
+saveChangesButton.addEventListener('click', saveActiveMapToLocalStorage);
 
 document.addEventListener('DOMContentLoaded', generateInsult);
 
