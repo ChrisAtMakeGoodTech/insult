@@ -11,27 +11,45 @@ export function setUpKitList() {
             insultSets.appendChild(getOption(key, key));
         }
     }
+
     const activeKey = localStorage.getItem(CONSTANTS.activeKey);
     insultSets.value = activeKey;
-    setUpEdit(JSON.parse(localStorage.getItem(activeKey)), activeKey === CONSTANTS.defaultKey);
+    setUpEdit(activeKey === CONSTANTS.defaultKey);
 }
 
-export function setUpEdit(insults, disabled) {
+export function setUpEdit(isDisabled) {
+    const ActiveMap = getActiveMap();
     editContainer.innerHTML = '';
-    const maxInsultCount = insults.reduce(getMaxOrCurrentLength, 0);
+    const maxInsultCount = ActiveMap.reduce(getMaxOrCurrentLength, 0);
+    const rows = maxInsultCount + 1;
 
-    for (let i = 0; i < insults.length; i++) {
-        const insultSet = insults[i];
-        const insultBox = document.createElement('textarea');
-        insultBox.rows = maxInsultCount + 1;
-        insultBox.innerHTML = insultSet.join('\n') + '\n';
-        insultBox.disabled = disabled;
-        insultBox.setAttribute('data-index', i);
-        insultBox.addEventListener('input', updateActiveMap);
+    for (let i = 0; i < ActiveMap.length; i++) {
+        const insultContents = ActiveMap[i].join('\n') + '\n';
+        const insultBox = buildInsultBox(i, insultContents, rows, isDisabled);
         editContainer.appendChild(insultBox);
     }
 
-    editControls.style.display = disabled ? 'none' : 'block';
+    editControls.style.display = isDisabled ? 'none' : 'block';
+}
+
+export function addNewWord() {
+    const ActiveMap = getActiveMap();
+    const index = ActiveMap.length;
+    const rows = editContainer.querySelector('textarea').rows;
+    const isDisabled = localStorage.getItem(CONSTANTS.activeKey) === CONSTANTS.defaultKey;
+    const insultBox = buildInsultBox(index, '', rows, isDisabled);
+    editContainer.appendChild(insultBox);
+    ActiveMap.push([]);
+}
+
+function buildInsultBox(index, contents, rows, isDisabled) {
+    const insultBox = document.createElement('textarea');
+    insultBox.rows = rows;
+    insultBox.innerHTML = contents;
+    insultBox.disabled = isDisabled;
+    insultBox.setAttribute('data-index', index);
+    insultBox.addEventListener('input', updateActiveMap);
+    return insultBox;
 }
 
 function updateActiveMap(ev) {

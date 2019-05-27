@@ -5,3 +5,5 @@ export const editControls = document.getElementById('edit-controls');
 export const insultSets = document.getElementById('insult-sets');
 export const addSetButton = document.getElementById('add-set');
 export const newSetNameInput = document.getElementById('new-set-name');
+export const addInsultWordButton = document.getElementById('add-insult-word-button');
+export const saveChangesButton = document.getElementById('save-changes-button');
